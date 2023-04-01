@@ -109,6 +109,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+/puc_project_01
 
 # Spyder project settings
 .spyderproject
