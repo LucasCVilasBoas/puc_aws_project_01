@@ -1,14 +1,14 @@
 import requests
 
-url_num_to_dollar = "https://www.dataaccess.com/webservicesserver/NumberConversion.wso"
+url_valid_isbn13 = "http://webservices.daehosting.com/services/isbnservice.wso"
 
-payload_num_to_dollar = """<?xml version="1.0" encoding="UTF-8"?>
+payload_valid_isbn13 = """<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-   <soap:Body>
-      <NumberToDollars xmlns="http://www.dataaccess.com/webservicesserver/">
-         <dNum>96</dNum>
-      </NumberToDollars>
-   </soap:Body>
+  <soap:Body>
+    <IsValidISBN13 xmlns="http://webservices.daehosting.com/ISBN">
+      <sISBN>978-1-4612-9090-2</sISBN>
+    </IsValidISBN13>
+  </soap:Body>
 </soap:Envelope>
 """
 
@@ -52,20 +52,44 @@ payload_list_currencies = """<?xml version="1.0" encoding="utf-8"?>
 </soap12:Envelope>
 """
 
-url_convert_temperature = "https://www.w3schools.com/xml/tempconvert.asmx"
+url_convert_temperature = "http://webservices.daehosting.com/services/temperatureconversions.wso?op=FahrenheitToCelsius"
 payload_convert_temperature = """<?xml version="1.0" encoding="utf-8"?>
-<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+<soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Body>
-    <CelsiusToFahrenheit xmlns="https://www.w3schools.com/xml/">
-      <Celsius>20</Celsius>
-    </CelsiusToFahrenheit>
+    <FahrenheitToCelsius xmlns="http://webservices.daehosting.com/temperature">
+      <nFahrenheit>212</nFahrenheit>
+    </FahrenheitToCelsius>
   </soap12:Body>
 </soap12:Envelope>"""
 
 
 headers = {"Content-Type": "text/xml; charset=utf-8"}
 
-response = requests.request("POST", url_country, headers=headers, data=payload_country)
+response_multiply = requests.request(
+    "POST", url_multiply, headers=headers, data=payload_multiply
+)
+print(response_multiply.status_code)
 
-print(response.status_code)
-print(response.text)
+
+response_list_country = requests.request(
+    "POST", url_country, headers=headers, data=payload_country
+)
+print(response_list_country.status_code)
+
+
+response_list_currencies = requests.request(
+    "POST", url_list_currencies, headers=headers, data=payload_list_currencies
+)
+print(response_list_currencies.status_code)
+
+
+response_convert_temperature = requests.request(
+    "POST", url_convert_temperature, headers=headers, data=payload_convert_temperature
+)
+print(response_convert_temperature.status_code)
+
+
+response_valid_isbn13 = requests.request(
+    "POST", url_valid_isbn13, headers=headers, data=payload_valid_isbn13
+)
+print(response_valid_isbn13.status_code)
