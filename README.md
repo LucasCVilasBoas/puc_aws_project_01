@@ -1,8 +1,4 @@
-# PONTIFÍCIA UNIVERSIDADE CATÓLICA DE MINAS GERAIS
-
-## APIS e Web Services
-
-### Trabalho Prático 01
+# APIs e Web Services - Trabalho Prático 01
 
 **Nomes**
 
@@ -16,7 +12,7 @@
 
 ### Descrição
 
-Trabalho apresentado na disciplina APIS e Web Services, do curso de Engenharia de Software da PUC-Minas.
+Trabalho apresentado na disciplina APIs e Web Services, do curso de Engenharia de Software da PUC-Minas.
 O código apresentado efetua cinco requisições em diferentes webservices com os seguintes objetivos:
 
 1. Verificar se um ISBN13 é válido
